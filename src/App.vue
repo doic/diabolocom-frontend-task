@@ -6,7 +6,7 @@ import LocaleSwitcher from './components/LocaleSwitcher.vue'
 </script>
 <template>
   <h1 class="xs:text-xl md:text-2xl text-center m-4 font-bold">Diabolocom Frontend Task</h1>
-  <div class="flex flex-col xs:flex-row justify-evenly">
+  <div class="flex flex-col xs:flex-row justify-evenly gap-4">
     <div class="relative flex flex-col w-full xs:w-1/2 max-w-[30rem]">
       <CounterButtons />
       <CounterDisplay />
