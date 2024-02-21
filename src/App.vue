@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import CounterButtons from './components/CounterButtons.vue'
-import CounterDisplay from './components/CounterDisplay.vue'
-import CounterReset from './components/CounterReset.vue'
-import LocaleSwitcher from './components/LocaleSwitcher.vue'
+import CounterButtons from './components/CounterButtons.ce.vue'
+import CounterDisplay from './components/CounterDisplay.ce.vue'
+import CounterReset from './components/CounterReset.ce.vue'
+import LocaleSwitcher from './components/LocaleSwitcher.ce.vue'
 </script>
 <template>
   <h1 class="xs:text-xl md:text-2xl text-center m-4 font-bold">Diabolocom Frontend Task</h1>

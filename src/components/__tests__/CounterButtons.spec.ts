@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest'
 
 import { mount } from '@vue/test-utils'
-import CounterDisplay from '../CounterDisplay.vue'
-import CounterButtons from '../CounterButtons.vue'
+import CounterDisplay from '../CounterDisplay.ce.vue'
+import CounterButtons from '../CounterButtons.ce.vue'
 
 describe('CounterButtons', () => {
   const displayWrapper = mount(CounterDisplay)

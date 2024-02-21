@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 
 import { mount } from '@vue/test-utils'
-import CounterDisplay from '../CounterDisplay.vue'
+import CounterDisplay from '../CounterDisplay.ce.vue'
 
 describe('CounterDisplay', () => {
   it('renders properly without props', () => {
