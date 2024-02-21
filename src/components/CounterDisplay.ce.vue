@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
-import { store } from './store'
-import { translations } from './translations'
+import { store } from '@/stores/index'
+import { translations } from '@/translations'
 const { counterId, min, max, value } = withDefaults(defineProps<{
 	counterId?: string
 	min?: string
@@ -11,7 +11,7 @@ const { counterId, min, max, value } = withDefaults(defineProps<{
 	counterId: 'default',
 })
 if (min !== undefined || max !== undefined) {
-	store.setRange(counterId, [min?.length ? +min : undefined, max?.length ? +max : undefined])
+	store.setRange([min?.length ? +min : undefined, max?.length ? +max : undefined], counterId)
 }
 const hasFullRange = min !== undefined && max !== undefined
 

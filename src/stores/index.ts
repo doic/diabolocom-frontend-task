@@ -2,7 +2,7 @@ import { reactive } from 'vue'
 
 type StoreSettings = {
   value?: number
-  range?: [number, number] | undefined
+  range?: [number, number]
   locale?: 'en' | 'fr'
 }
 class Store {
@@ -25,7 +25,7 @@ class Store {
    * @param counterId
    * @param range [min, max]
    */
-  setRange(counterId: string = 'default', range: [number | undefined, number | undefined]) {
+  setRange(range: [number | undefined, number | undefined], counterId: string = 'default') {
     this.ranges.set(counterId, range)
   }
   /**

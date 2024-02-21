@@ -5,8 +5,8 @@ const { counterId } = withDefaults(defineProps<{
 	counterId: 'default',
 })
 
-import { store } from './store'
-import { translations } from './translations'
+import { store } from '@/stores/index'
+import { translations } from '@/translations'
 
 </script>
 <template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { store } from './store'
+import { store } from '@/stores/index'
 const { counterId } = withDefaults(defineProps<{
 	counterId?: string
 }>(), {
