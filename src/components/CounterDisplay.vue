@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import { store } from './store'
+import { translations } from './translations'
 const { counterId, min, max, value } = withDefaults(defineProps<{
 	counterId?: string
 	min?: string
@@ -45,15 +46,19 @@ onMounted(() => {
 })
 </script>
 <template>
-	<div class="m-1 text-xl font-medium uppercase leading-normal">
+	<div class="m-1 text-xl font-medium  leading-normal">
 		<svg :id="'chart_' + counterId" v-if="hasFullRange" view-box="0 0 100 100"
 			class="w-full mx-auto max-w-48 aspect-square">
 			<circle class="stroke-slate-900 stroke-[1rem] fill-none" cx="50%" cy="50%" r="45%" />
 			<circle stroke-linecap="round" :stroke-dasharray="scaledValue + ' ' + strokeGap"
 				class="stroke-primary-500 stroke-[.5rem] fill-none -rotate-90 origin-center transition-all" cx="50%"
 				cy="50%" r="45%" />
-			<text text-anchor="middle" x="50%" y="52%">{{ store.getCounter(counterId) }}</text>
+			<text text-anchor="middle" class="" x="50%" y="50%">
+				<tspan>{{ translations[store.getLocale(counterId)].value }}:</tspan>
+				<tspan x="50%" dy="1.2em">{{ store.getCounter(counterId) }}</tspan>
+			</text>
 		</svg>
-		<div class="w-full text-center" v-else>{{ store.getCounter(counterId) }}</div>
+		<div class="w-full text-center" v-else>{{ translations[store.getLocale(counterId)].value }}: {{
+			store.getCounter(counterId) }}</div>
 	</div>
 </template>

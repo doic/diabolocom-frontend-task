@@ -2,11 +2,13 @@ export const translations: { [lang: string]: { [word: string]: string } } = {
   en: {
     minus: 'Minus',
     plus: 'Plus',
-    reset: 'Reset'
+    reset: 'Reset',
+    value: 'Value'
   },
   fr: {
     minus: 'Moins',
     plus: 'Plus',
-    reset: 'Réinitialiser'
+    reset: 'Réinitialiser',
+    value: 'Valeur'
   }
 }
