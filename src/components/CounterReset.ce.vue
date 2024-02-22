@@ -11,7 +11,7 @@ const { counterId, color } = withDefaults(defineProps<{
 })
 </script>
 <template>
-	<button @click="store.reset(counterId)" :class="colorVariants[color].button"
+	<button :disabled="store.getCounter(counterId) === 0" @click="store.reset(counterId)" :class="colorVariants[color].button"
 		class="rounded-md m-1 p-2.5 text-xs font-medium uppercase leading-normal text-white transition duration-150 ease-in-out">
 		{{ translations[store.getLocale(counterId)].reset }}
 	</button>
