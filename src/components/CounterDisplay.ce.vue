@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
-import { store } from '@/stores/index'
-import { translations } from '@/translations'
+import { store } from '../stores/index'
+import { colorVariants, translations } from '../lib'
+
 const { counterId, min, max, value } = withDefaults(defineProps<{
 	counterId?: string
+	color?: 'primary' | 'secondary' | 'neutral'
 	min?: string
 	max?: string
 	value?: string
 }>(), {
 	counterId: 'default',
+	color: 'primary'
 })
 if (min !== undefined || max !== undefined) {
 	store.setRange([min?.length ? +min : undefined, max?.length ? +max : undefined], counterId)
@@ -51,14 +54,16 @@ onMounted(() => {
 			class="w-full mx-auto max-w-48 aspect-square">
 			<circle class="stroke-slate-900 stroke-[1rem] fill-none" cx="50%" cy="50%" r="45%" />
 			<circle stroke-linecap="round" :stroke-dasharray="scaledValue + ' ' + strokeGap"
-				class="stroke-primary-500 stroke-[.5rem] fill-none -rotate-90 origin-center transition-all" cx="50%"
-				cy="50%" r="45%" />
+				:class="colorVariants[color].stroke500"
+				class="stroke-[.5rem] fill-none -rotate-90 origin-center transition-all duration-300" cx="50%" cy="50%"
+				r="45%" />
 			<text text-anchor="middle" class="" x="50%" y="50%">
 				<tspan>{{ translations[store.getLocale(counterId)].value }}:</tspan>
 				<tspan x="50%" dy="1.2em">{{ store.getCounter(counterId) }}</tspan>
 			</text>
 		</svg>
-		<div class="w-full text-center" v-else>{{ translations[store.getLocale(counterId)].value }}: {{
-			store.getCounter(counterId) }}</div>
+		<div class="w-full mx-auto max-w-48 aspect-square text-center pt-8" v-else>{{
+			translations[store.getLocale(counterId)].value }}: {{
+		store.getCounter(counterId) }}</div>
 	</div>
 </template>
