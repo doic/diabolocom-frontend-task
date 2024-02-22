@@ -1,13 +1,13 @@
 export const translations: { [lang: string]: { [word: string]: string } } = {
   en: {
-    minus: 'Minus',
-    plus: 'Plus',
+    minus: 'Decrease',
+    plus: 'Increase',
     reset: 'Reset',
     value: 'Value'
   },
   fr: {
-    minus: 'Moins',
-    plus: 'Plus',
+    minus: 'Diminuer',
+    plus: 'Augmenter',
     reset: 'Réinitialiser',
     value: 'Valeur'
   }

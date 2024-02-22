@@ -20,6 +20,9 @@ class Store {
   getRange(counterId: string = 'default') {
     return this.ranges.get(counterId)
   }
+  getRangeDiff(counterId: string = 'default') {
+    return Math.abs((this.getRange(counterId)?.[1] ?? 0) - (this.getRange(counterId)?.[0] ?? 0))
+  }
   /**
    * Set the range of the counter
    * @param counterId
