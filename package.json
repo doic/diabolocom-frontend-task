@@ -11,7 +11,7 @@
     "test:e2e": "playwright test",
     "build-vue": "vite build",
     "build-wc": "npm run build-tailwind && vite build -c vite.wc.config.js",
-    "build-tailwind": "tailwindcss build -i src/style.css -c ./tailwind.config.js -o src/tailwind.css --postcss",
+    "build-tailwind": "tailwindcss build -i src/style.css -c ./tailwind.config.js -o ./tailwind.css --postcss",
     "preview-wc": "vite preview -c vite.wc.config.js",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
