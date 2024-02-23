@@ -5,22 +5,37 @@ import CounterReset from './CounterReset.ce.vue'
 import LocaleSwitcher from './LocaleSwitcher.ce.vue'
 import { colorVariants } from '../lib'
 
-const { counterId, min, max, value } = withDefaults(defineProps<{
-	counterId?: string
+const { counterid, min, max, value } = withDefaults(defineProps<{
+	counterid?: string
 	color?: 'primary' | 'secondary' | 'neutral'
 	min?: string
 	max?: string
 	value?: string
 }>(), {
-	counterId: 'default',
+	counterid: 'default',
 	color: 'primary'
 })
 </script>
 <template>
-	<div :class="colorVariants[color].bg200" class="relative flex flex-col w-full xs:w-1/2 max-w-[30rem] p-4 rounded-md">
-		<CounterDisplay :counterId="counterId" :min="min" :max="max" :value="value" :color="color" />
-		<CounterButtons :counterId="counterId" :min="min" :max="max" :value="value" :color="color" />
-		<CounterReset :counterId="counterId" :color="color" />
-		<LocaleSwitcher :counterId="counterId" :color="color" />
+	<div :class="colorVariants[color].bg200"
+		 class="relative flex flex-col min-w-[20rem] w-full max-w-[30rem] p-8 gap-4 rounded-md">
+		<CounterDisplay :counterid="counterid"
+						:min="min"
+						:max="max"
+						:value="value"
+						:color="color" />
+		<CounterButtons :counterid="counterid"
+						:min="min"
+						:max="max"
+						:value="value"
+						:color="color" />
+		<CounterReset :counterid="counterid"
+					  :color="color" />
+		<LocaleSwitcher :counterid="counterid"
+						:color="color" />
 	</div>
 </template>
+
+<style>
+@import '/tailwind.css';
+</style>

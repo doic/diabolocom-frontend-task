@@ -11,16 +11,16 @@ describe('CounterButtons', () => {
   const decrementButton = buttonsWrapper.find<HTMLButtonElement>('button.decrement')
   const value = displayWrapper.find('.value')
 
-  const displayWrapper5 = mount(CounterDisplay, { props: { counterId: 'value5', value: '5' } })
-  const buttonsWrapper5 = mount(CounterButtons, { props: { counterId: 'value5' } })
+  const displayWrapper5 = mount(CounterDisplay, { props: { counterid: 'value5', value: '5' } })
+  const buttonsWrapper5 = mount(CounterButtons, { props: { counterid: 'value5' } })
   const incrementButton5 = buttonsWrapper5.find<HTMLButtonElement>('button.increment')
   const decrementButton5 = buttonsWrapper5.find<HTMLButtonElement>('button.decrement')
   const value5 = displayWrapper5.find('.value')
 
   const displayWrapperRange = mount(CounterDisplay, {
-    props: { counterId: 'range', value: '5', min: '4', max: '6' }
+    props: { counterid: 'range', value: '5', min: '4', max: '6' }
   })
-  const buttonsWrapperRange = mount(CounterButtons, { props: { counterId: 'range' } })
+  const buttonsWrapperRange = mount(CounterButtons, { props: { counterid: 'range' } })
   const valueRange = displayWrapperRange.find('.value')
 
   it('render properly with no CounterDisplay props', () => {
@@ -46,7 +46,7 @@ describe('CounterButtons', () => {
     await decrementButtonRange.trigger('click') // 5
   })
 
-  it('correctly increment and decrement value with same counterId', async () => {
+  it('correctly increment and decrement value with same counterid', async () => {
     await incrementButton.trigger('click')
     await incrementButton.trigger('click')
     expect(value.text()).toBe('2')

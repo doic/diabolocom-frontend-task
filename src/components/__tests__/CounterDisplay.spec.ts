@@ -5,12 +5,12 @@ import CounterDisplay from '../CounterDisplay.ce.vue'
 
 describe('CounterDisplay', () => {
   const wrapper = mount(CounterDisplay)
-  const wrapper5 = mount(CounterDisplay, { props: { counterId: 'value5', value: '5' } })
+  const wrapper5 = mount(CounterDisplay, { props: { counterid: 'value5', value: '5' } })
   const wrapperRange = mount(CounterDisplay, {
-    props: { counterId: 'fullRange', min: '0', max: '10' }
+    props: { counterid: 'fullRange', min: '0', max: '10' }
   })
   const wrapperColor = mount(CounterDisplay, {
-    props: { counterId: 'color', min: '0', max: '10', color: 'secondary' }
+    props: { counterid: 'color', min: '0', max: '10', color: 'secondary' }
   })
   it('renders properly without props', () => {
     expect(wrapper.text()).toContain('0')

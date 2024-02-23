@@ -14,31 +14,31 @@ class Store {
     this.ranges.set('default', settings?.range)
     this.locales.set('default', settings?.locale ?? 'en')
   }
-  getCounter(counterId: string = 'default') {
-    return this.counters.get(counterId) ?? 0
+  getCounter(counterid: string = 'default') {
+    return this.counters.get(counterid) ?? 0
   }
-  getRange(counterId: string = 'default') {
-    return this.ranges.get(counterId)
+  getRange(counterid: string = 'default') {
+    return this.ranges.get(counterid)
   }
-  getRangeDiff(counterId: string = 'default') {
-    return Math.abs((this.getRange(counterId)?.[1] ?? 0) - (this.getRange(counterId)?.[0] ?? 0))
+  getRangeDiff(counterid: string = 'default') {
+    return Math.abs((this.getRange(counterid)?.[1] ?? 0) - (this.getRange(counterid)?.[0] ?? 0))
   }
   /**
    * Set the range of the counter
-   * @param counterId
+   * @param counterid
    * @param range [min, max]
    */
-  setRange(range: [number | undefined, number | undefined], counterId: string = 'default') {
-    this.ranges.set(counterId, range)
+  setRange(range: [number | undefined, number | undefined], counterid: string = 'default') {
+    this.ranges.set(counterid, range)
   }
   /**
    * Check if the counter is at its minimum value
-   * @param counterId
+   * @param counterid
    * @returns boolean
    */
-  isMin(counterId: string = 'default') {
-    const value = this.getCounter(counterId)
-    const min = this.getRange(counterId)?.[0]
+  isMin(counterid: string = 'default') {
+    const value = this.getCounter(counterid)
+    const min = this.getRange(counterid)?.[0]
     // without a min value, isMin is always false
     if (min === undefined) return false
     // otherwise, we compare the value to the min
@@ -46,48 +46,48 @@ class Store {
   }
   /**
    * Check if the counter is at its maximum value
-   * @param counterId
+   * @param counterid
    * @returns boolean
    */
-  isMax(counterId: string = 'default') {
-    const value = this.getCounter(counterId)
-    const max = this.getRange(counterId)?.[1]
+  isMax(counterid: string = 'default') {
+    const value = this.getCounter(counterid)
+    const max = this.getRange(counterid)?.[1]
     // without a max value, isMax is always false
     if (max === undefined) return false
     // otherwise, we compare the value to the max
     return value >= max
   }
-  getLocale(counterId: string = 'default') {
-    return this.locales.get(counterId) ?? 'en'
+  getLocale(counterid: string = 'default') {
+    return this.locales.get(counterid) ?? 'en'
   }
   /**
    * Increment the counter, unless it's already at the maximum value
-   * @param counterId
+   * @param counterid
    */
-  increment(counterId: string = 'default') {
-    if (!this.isMax(counterId)) this.counters.set(counterId, this.getCounter(counterId) + 1)
+  increment(counterid: string = 'default') {
+    if (!this.isMax(counterid)) this.counters.set(counterid, this.getCounter(counterid) + 1)
   }
   /**
    * Decrement the counter, unless it's already at the minimum value
-   * @param counterId
+   * @param counterid
    */
-  decrement(counterId: string = 'default') {
-    if (!this.isMin(counterId)) this.counters.set(counterId, this.getCounter(counterId) - 1)
+  decrement(counterid: string = 'default') {
+    if (!this.isMin(counterid)) this.counters.set(counterid, this.getCounter(counterid) - 1)
   }
   /**
    * Reset the counter to 0
-   * @param counterId
+   * @param counterid
    */
-  reset(counterId: string = 'default') {
-    this.counters.set(counterId, 0)
+  reset(counterid: string = 'default') {
+    this.counters.set(counterid, 0)
   }
   /**
    * Switch the locale between 'en' and 'fr'
-   * @param counterId
+   * @param counterid
    */
-  switch(counterId: string = 'default') {
-    const locale = this.getLocale(counterId)
-    this.locales.set(counterId, locale === 'en' ? 'fr' : 'en')
+  switch(counterid: string = 'default') {
+    const locale = this.getLocale(counterid)
+    this.locales.set(counterid, locale === 'en' ? 'fr' : 'en')
   }
 }
 
