@@ -7,7 +7,7 @@ import CounterComponent from './components/CounterComponent.ce.vue'
 </script>
 <template>
   <h1 class="xs:text-xl md:text-2xl text-center m-4 font-bold">Diabolocom Frontend Task</h1>
-  <div class="grid h-full md:grid-cols-2 gap-4 place-items-center">
+  <div class="grid md:grid-cols-2 h-full gap-4 place-items-center">
     <div class="relative flex flex-col min-w-[20rem] w-full max-w-[30rem] bg-primary-200 p-8 gap-4 rounded-md">
       <CounterDisplay />
       <CounterButtons />
@@ -18,13 +18,8 @@ import CounterComponent from './components/CounterComponent.ce.vue'
     <CounterComponent counterid="1"
                       min="-100"
                       max="100"
-                      value="0"
-                      color="neutral" />
-
-    <CounterComponent counterid="2"
-                      min="0"
-                      max="10"
-                      value="5"
+                      value="30"
+                      lg="fr"
                       color="secondary" />
 
   </div>

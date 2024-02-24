@@ -11,9 +11,11 @@ const { counterid, min, max, value } = withDefaults(defineProps<{
 	min?: string
 	max?: string
 	value?: string
+	lg?: 'en' | 'fr'
 }>(), {
 	counterid: 'default',
-	color: 'primary'
+	color: 'primary',
+	lg: 'en',
 })
 </script>
 <template>
@@ -32,7 +34,8 @@ const { counterid, min, max, value } = withDefaults(defineProps<{
 		<CounterReset :counterid="counterid"
 					  :color="color" />
 		<LocaleSwitcher :counterid="counterid"
-						:color="color" />
+						:color="color"
+						:lg="lg" />
 	</div>
 </template>
 
