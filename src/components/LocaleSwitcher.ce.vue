@@ -1,13 +1,21 @@
 <script setup lang="ts">
 import { store } from '../stores/index'
 import { colorVariants } from '../lib'
+import { onMounted } from 'vue';
 
-const { counterid, color } = withDefaults(defineProps<{
+const { counterid, color, lg } = withDefaults(defineProps<{
 	counterid?: string,
-	color?: 'primary' | 'secondary' | 'neutral'
+	color?: 'primary' | 'secondary' | 'neutral',
+	lg?: 'en' | 'fr'
 }>(), {
 	counterid: 'default',
-	color: 'primary'
+	color: 'primary',
+	lg: 'en'
+})
+onMounted(() => {
+	if (lg === 'fr') {
+		store.switch(counterid)
+	}
 })
 </script>
 <template>
@@ -15,6 +23,7 @@ const { counterid, color } = withDefaults(defineProps<{
 		   class="block w-full cursor-pointer rounded-md p-2.5 text-xs font-medium uppercase leading-normal text-white ">
 		<input @change="store.switch(counterid)"
 			   type="checkbox"
+			   :checked="lg === 'fr'"
 			   class="peer sr-only" />
 		<div
 			 class="relative grid grid-cols-2 transition duration-150 ease-in-out items-center  after:absolute  after:h-6 after:w-1/2 after:rounded-md after:bg-white/30 after:transition-all after:content-[''] peer-checked:after:translate-x-full peer-focus:outline-none ">
