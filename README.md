@@ -1,7 +1,12 @@
 # Diabolocom Frontend Task
 
-This project is a demonstration of specific components development using [ViteJS](https://vitejs.dev/), [VueJS](https://vuejs.org/), [TypeScript](https://www.typescriptlang.org/) and [TailwindCSS](https://tailwindcss.com/). The component are also built as web components.
+This project is a demonstration of specific components development using [ViteJS](https://vitejs.dev/), [VueJS](https://vuejs.org/), [TypeScript](https://www.typescriptlang.org/) and [TailwindCSS](https://tailwindcss.com/).
+
+The component are also built as web components.
+
 The full requirements are detailed [here](REQUIREMENTS.md).
+
+The whole development process is detailed [here](DEVELOPMENT_PROCESS.md).
 
 ## Recommended IDE Setup
 
