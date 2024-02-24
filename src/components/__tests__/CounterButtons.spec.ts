@@ -28,40 +28,52 @@ describe('CounterButtons', () => {
     expect(buttonsWrapper.find('button.decrement').exists()).toBe(true)
   })
   it('correctly increment and decrement displayed value', async () => {
-    await buttonsWrapper5.find('button.decrement').trigger('click')
+    // click event doesn't work the same way here and in the browser, we need to decompose the mousedown and mouseup events
+    await buttonsWrapper5.find('button.decrement').trigger('mousedown')
+    await buttonsWrapper5.find('button.decrement').trigger('mouseup')
     expect(value5.text()).toBe('4')
-    await buttonsWrapper5.find('button.increment').trigger('click')
+    await buttonsWrapper5.find('button.increment').trigger('mousedown')
+    await buttonsWrapper5.find('button.increment').trigger('mouseup')
     expect(value5.text()).toBe('5')
   })
   it('correctly disabled when out of range', async () => {
     const incrementButtonRange = buttonsWrapperRange.find<HTMLButtonElement>('button.increment')
     const decrementButtonRange = buttonsWrapperRange.find<HTMLButtonElement>('button.decrement')
-    await decrementButtonRange.trigger('click')
+    await decrementButtonRange.trigger('mousedown')
+    await decrementButtonRange.trigger('mouseup')
     expect(valueRange.text()).toBe('4')
     expect(decrementButtonRange.element.disabled).toBe(true)
-    await incrementButtonRange.trigger('click') // 5
-    await incrementButtonRange.trigger('click') // 6
+    await incrementButtonRange.trigger('mousedown')
+    await incrementButtonRange.trigger('mouseup') // 5
+    await incrementButtonRange.trigger('mousedown')
+    await incrementButtonRange.trigger('mouseup') // 6
     expect(valueRange.text()).toBe('6')
     expect(incrementButtonRange.element.disabled).toBe(true)
-    await decrementButtonRange.trigger('click') // 5
+    await decrementButtonRange.trigger('mousedown')
+    await decrementButtonRange.trigger('mouseup') // 5
   })
 
   it('correctly increment and decrement value with same counterid', async () => {
-    await incrementButton.trigger('click')
-    await incrementButton.trigger('click')
+    await incrementButton.trigger('mousedown')
+    await incrementButton.trigger('mouseup')
+    await incrementButton.trigger('mousedown')
+    await incrementButton.trigger('mouseup')
     expect(value.text()).toBe('2')
     expect(value5.text()).toBe('5')
 
-    await decrementButton.trigger('click')
+    await decrementButton.trigger('mousedown')
+    await decrementButton.trigger('mouseup')
     expect(value.text()).toBe('1')
     expect(value5.text()).toBe('5')
 
-    await incrementButton5.trigger('click')
+    await incrementButton5.trigger('mousedown')
+    await incrementButton5.trigger('mouseup')
 
     expect(value.text()).toBe('1')
     expect(value5.text()).toBe('6')
 
-    await decrementButton5.trigger('click')
+    await decrementButton5.trigger('mousedown')
+    await decrementButton5.trigger('mouseup')
     expect(value.text()).toBe('1')
     expect(value5.text()).toBe('5')
   })
