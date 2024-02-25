@@ -34,6 +34,8 @@ If you want to tweak the components
 npm run dev
 ```
 
+See [how to use the components](docs/HOWTO.md)
+
 ### Build Options
 
 This command will build both Vue components and Web components:
@@ -58,19 +60,21 @@ npm run build-wc
 npm run test:unit
 ```
 
-### Run End-to-End Tests with [Playwright](https://playwright.dev)
+### Run E2E Tests with [Playwright](https://playwright.dev)
 
 ```sh
 # Install browsers for the first run
 npx playwright install
 
-# When testing on CI, must build the project first
+# Build the project before running the e2e tests
 npm run build
 
-# Runs the end-to-end tests
+# Runs the e2e tests
 npm run test:e2e
 # Runs the tests only for Vue components
-npm run test:e2e -- tests/example.spec.ts
+npm run test:e2e -- vue.spec.ts
+# Runs the tests only for Web components
+npm run test:e2e -- wc.spec.ts
 ```
 
 ### See the components live
