@@ -25,6 +25,14 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
 
 ## Project Setup
 
+First, clone this repo:
+
+```sh
+gh repo clone doic/diabolocom-frontend-task
+```
+
+Install all dependencies:
+
 ```sh
 npm install
 ```
@@ -35,10 +43,22 @@ npm install
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+### Build Options
+
+This command will build both Vue components and Web components:
 
 ```sh
 npm run build
+```
+
+You can choose which components to build:
+
+```sh
+# Build only Vue components:
+npm run build-vue
+
+# Build only Web components:
+npm run build-wc
 ```
 
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
