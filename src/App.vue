@@ -7,6 +7,11 @@ import CounterComponent from './components/CounterComponent.ce.vue'
 </script>
 <template>
   <h1 class="xs:text-xl md:text-2xl text-center m-4 font-bold">Diabolocom Frontend Task</h1>
+  <h2 class="xs:text-lg md:text-xl text-center m-4 mb-8 font-bold">
+    <img alt="VueJs Icon"
+         class="w-8 h-8 inline-block mr-2"
+         src="vue_icon.png" />VueJs Components Version
+  </h2>
   <div class="grid md:grid-cols-2 h-full gap-4 place-items-center">
     <div class="relative flex flex-col min-w-[20rem] w-full max-w-[30rem] bg-primary-200 p-8 gap-4 rounded-md">
       <CounterDisplay />
