@@ -1,34 +1,23 @@
 # Diabolocom Frontend Task
 
+![Vue page](./docs/vue_page.png)
+
 This project is a demonstration of specific components development using [ViteJS](https://vitejs.dev/), [VueJS](https://vuejs.org/), [TypeScript](https://www.typescriptlang.org/) and [TailwindCSS](https://tailwindcss.com/).
 
-The component are also built as web components.
-
-The full requirements are detailed [here](REQUIREMENTS.md).
-
-The whole development process is detailed [here](DEVELOPMENT_PROCESS.md).
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+- [Full requirements for the task](docs/REQUIREMENTS.md)
+- [Development process](docs/DEVELOPMENT_PROCESS.md)
+- [How to use the components](docs/HOWTO.md)
 
 ## Project Setup
 
 First, clone this repo:
 
 ```sh
+# With GitHub CLI
 gh repo clone doic/diabolocom-frontend-task
+
+# Or with git CLI
+git clone https://github.com/doic/diabolocom-frontend-task.git
 ```
 
 Install all dependencies:
@@ -37,7 +26,9 @@ Install all dependencies:
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Run Development Server
+
+If you want to tweak the components
 
 ```sh
 npm run dev
@@ -78,16 +69,12 @@ npm run build
 
 # Runs the end-to-end tests
 npm run test:e2e
-# Runs the tests only on Chromium
-npm run test:e2e -- --project=chromium
-# Runs the tests of a specific file
+# Runs the tests only for Vue components
 npm run test:e2e -- tests/example.spec.ts
-# Runs the tests in debug mode
-npm run test:e2e -- --debug
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+### See the components live
 
-```sh
-npm run lint
-```
+| [![Vue page](./docs/vue_page.png)](https://diabolocom-frontend-task.vercel.app/)  | [![Wc page](./docs/wc_page.png)](https://diabolocom-frontend-task-wc.vercel.app/)  |
+| --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| <center>[VueJs components](https://diabolocom-frontend-task.vercel.app/)</center> | <center>[Web components](https://diabolocom-frontend-task-wc.vercel.app/)</center> |
