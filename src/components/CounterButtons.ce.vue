@@ -51,14 +51,14 @@ const eventHandler = (event: EventType, action: ActionType, e: MouseEvent | Touc
 				@touchstart="eventHandler('touch', 'decrement', $event)"
 				@mousedown="eventHandler('click', 'decrement', $event)"
 				:class="colorVariants[color].button"
-				class="decrement rounded-l border-r p-2.5 text-xs font-medium uppercase leading-normal text-white transition duration-150 ease-in-out disabled:text-opacity-70 ">
+				class="decrement rounded-l-md border-r p-2.5 text-xs font-medium uppercase leading-normal text-white transition duration-150 ease-in-out disabled:text-opacity-70 ">
 			- {{ translations[store.getLocale(counterid)].minus }}
 		</button>
 		<button :disabled="store.isMax(counterid)"
 				@touchstart="eventHandler('touch', 'increment', $event)"
 				@mousedown="eventHandler('click', 'increment', $event)"
 				:class="colorVariants[color].button"
-				class="increment rounded-r p-2.5 text-xs font-medium uppercase leading-normal text-white transition duration-150 ease-in-out disabled:text-opacity-70">
+				class="increment rounded-r-md p-2.5 text-xs font-medium uppercase leading-normal text-white transition duration-150 ease-in-out disabled:text-opacity-70">
 			{{ translations[store.getLocale(counterid)].plus }} +
 		</button>
 	</div>
