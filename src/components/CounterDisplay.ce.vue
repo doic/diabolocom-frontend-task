@@ -60,8 +60,9 @@ onMounted(() => {
 	window.addEventListener('resize', updateCircumference)
 })
 </script>
-<template :id="'display_' + counterid">
-	<div class="text-xl font-medium  leading-normal">
+<template>
+	<div :class="hasFullRange ? 'chart' : 'no-chart'"
+		 class="display text-xl font-medium  leading-normal">
 		<svg :id="'chart_' + counterid"
 			 v-if="hasFullRange"
 			 view-box="0 0 100 100"
