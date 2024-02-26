@@ -21,6 +21,8 @@ As the 4 components were working, I realized a few things could be improved or a
 - ability to long click (long touch on touch screens) to increase or decrease the counter.
 - create a main component that wraps the 4 required ones. Although the 4 components can be used directly, having a main component makes it easier to use (both in Vue Components and Web Components cases)
 
+The graphic representation is generated with a simple svg element. No extra library involved, to limit the web components weight.
+
 # Web Components Development
 
 Less familiar with web components, I had to see different ways to build the components, integrate them in an html page directly from the build commands.
