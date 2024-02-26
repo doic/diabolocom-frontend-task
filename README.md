@@ -26,6 +26,24 @@ Install all dependencies:
 npm install
 ```
 
+On Mac, if you run into an error about `canvas` package, you can fix it this way:
+
+```sh
+brew install pkg-config cairo pango libpng jpeg giflib librsvg
+```
+
+```sh
+brew update
+```
+
+```sh
+brew upgrade
+```
+
+```sh
+npm i
+```
+
 ### Run Development Server
 
 If you want to tweak the components
