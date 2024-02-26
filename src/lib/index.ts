@@ -1,3 +1,4 @@
 import { colorVariants } from './colorVariants'
 import { translations } from './translations'
-export { colorVariants, translations }
+import { eventHandler } from './eventHandler'
+export { colorVariants, translations, eventHandler }
