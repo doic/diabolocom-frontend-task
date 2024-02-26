@@ -5,6 +5,7 @@ type StoreSettings = {
   range?: [number, number]
   locale?: 'en' | 'fr'
 }
+type Range = [number | undefined, number | undefined] | undefined
 class Store {
   counters = new Map<string, number>()
   ranges = new Map<string, [number | undefined, number | undefined] | undefined>()
@@ -14,14 +15,41 @@ class Store {
     this.ranges.set('default', settings?.range)
     this.locales.set('default', settings?.locale ?? 'en')
   }
+  /**
+   * Get the value of the counter
+   * @param counterid
+   * @returns number
+   */
   getCounter(counterid: string = 'default') {
     return this.counters.get(counterid) ?? 0
   }
-  getRange(counterid: string = 'default') {
+  /**
+   * Get the range of the counter
+   * @param counterid
+   * @returns Range
+   */
+  getRange(counterid: string = 'default'): Range {
     return this.ranges.get(counterid)
   }
+  /**
+   * Get the difference between the min and max of the counter
+   * @param counterid
+   * @returns number
+   */
   getRangeDiff(counterid: string = 'default') {
     return Math.abs((this.getRange(counterid)?.[1] ?? 0) - (this.getRange(counterid)?.[0] ?? 0))
+  }
+  /**
+   * Get the timer value based on the range of the counter.
+   * The timer is used for animations and is inversely proportional to the range.
+   * @param counterid
+   * @returns number - defaults to 10, minimum value of 1
+   */
+  getTimer(counterid: string = 'default') {
+    const range = this.getRangeDiff(counterid)
+    if (range === 0) return 10
+    const timer = 5e3 / this.getRangeDiff(counterid)
+    return timer < 1 ? 1 : timer
   }
   /**
    * Set the range of the counter
@@ -57,6 +85,11 @@ class Store {
     // otherwise, we compare the value to the max
     return value >= max
   }
+  /**
+   * Get the locale of the counter
+   * @param counterid
+   * @returns 'en' | 'fr'
+   */
   getLocale(counterid: string = 'default') {
     return this.locales.get(counterid) ?? 'en'
   }
