@@ -7,7 +7,9 @@ export const colorVariants = {
       'bg-primary-500 disabled:bg-primary-400 disabled:hover:bg-primary-400 hover:bg-primary-600 active:bg-primary-700',
     label: 'bg-primary-500 hover:bg-primary-600',
     stroke500: 'stroke-primary-500',
-    stroke900: 'stroke-primary-900'
+    stroke900: 'stroke-primary-900',
+    text500: 'text-primary-500',
+    text900: 'text-primary-900'
   },
   secondary: {
     bg200: 'bg-secondary-200',
@@ -17,7 +19,9 @@ export const colorVariants = {
       'bg-secondary-500 disabled:bg-secondary-400 disabled:hover:bg-secondary-400 hover:bg-secondary-600 active:bg-secondary-700',
     label: 'bg-secondary-500 hover:bg-secondary-600',
     stroke500: 'stroke-secondary-500',
-    stroke900: 'stroke-secondary-900'
+    stroke900: 'stroke-secondary-900',
+    text500: 'text-secondary-500',
+    text900: 'text-secondary-900'
   },
   neutral: {
     bg200: 'bg-neutral-200',
@@ -27,6 +31,8 @@ export const colorVariants = {
       'bg-neutral-500 disabled:bg-neutral-400 disabled:hover:bg-neutral-400 hover:bg-neutral-600 active:bg-neutral-700',
     label: 'bg-neutral-500 hover:bg-neutral-600',
     stroke500: 'stroke-neutral-500',
-    stroke900: 'stroke-neutral-900'
+    stroke900: 'stroke-neutral-900',
+    text500: 'text-neutral-500',
+    text900: 'text-neutral-900'
   }
 }

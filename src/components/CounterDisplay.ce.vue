@@ -25,13 +25,15 @@ const scaledValue = computed(() => {
 	if (hasFullRange) {
 		const [min, max] = store.getRange(counterid) as [number, number]
 		const value = store.getCounter(counterid)
-		return Math.ceil((value - min) / (max - min) * circumference.value)
+		return (value - min) / (max - min) * circumference.value * 2 / 3
 	}
 	return store.getCounter(counterid)
 })
 // We need this element to calculate the circumference of the circle
 let svgElement: SVGElement | null;
 const circumference = ref(0)
+const circ33 = computed(() => circumference.value / 3)
+const circ66 = computed(() => circumference.value * 2 / 3)
 const strokeGap = computed(() => scaledValue.value < circumference.value ? circumference.value - scaledValue.value : 0)
 
 /**
@@ -43,15 +45,15 @@ const updateCircumference = () => {
 	const width = svgElement?.getBoundingClientRect().width ?? 0 // arbitray value, looks like svgElement is not found in shadow dom :-(
 	const radius = width * 45 / 100
 	circumference.value = 2 * Math.PI * radius
-	console.log({ svgElement, circumference: circumference.value })
 }
+
 onMounted(() => {
 	svgElement = document.querySelector('svg#chart_' + counterid);
 	// In the case of shadow dom, svgElement is not found
 	if (!svgElement) {
 		const attributeSelector = counterid === 'default' ? ':not([counterid])' : '[counterid="' + counterid + '"]'
 		const cc = document.querySelector('dbl-counter' + attributeSelector);
-		console.log({ cc })
+
 		// We target dbl-counter (if we use one web component) or dbl-display (if we use the 4 web components)
 		const shadowRoot = cc ? cc.shadowRoot : document.querySelector('dbl-display' + attributeSelector)
 		svgElement = shadowRoot?.querySelector('svg#chart_' + counterid) ?? null
@@ -62,37 +64,41 @@ onMounted(() => {
 </script>
 <template>
 	<div :class="hasFullRange ? 'chart' : 'no-chart'"
-		 class="display text-xl font-medium  leading-normal">
+		 class="display w-64 h-40 relative text-xl font-medium  leading-normal">
 		<svg :id="'chart_' + counterid"
 			 v-if="hasFullRange"
 			 view-box="0 0 100 100"
-			 class="w-full mx-auto max-w-48 aspect-square">
-			<circle class="stroke-[1rem] fill-none"
+			 class="mx-auto w-48 aspect-square">
+			<circle stroke-linecap="round"
+					class="stroke-[1rem] fill-none -rotate-[210deg] origin-center"
+					:stroke-dasharray="circ66 + ' ' + circ33"
 					:class="colorVariants[color].stroke900"
 					cx="50%"
 					cy="50%"
 					r="45%" />
 			<circle stroke-linecap="round"
 					:stroke-dasharray="scaledValue + ' ' + strokeGap"
-					:class="colorVariants[color].stroke500"
-					class="stroke-[.5rem] fill-none -rotate-90 origin-center transition-all duration-300"
+					:class="colorVariants[color].stroke500 + ' duration-[' + store.getTimer(counterid) + ']'"
+					class="stroke-[.5rem] fill-none -rotate-[210deg] origin-center transition-all ease-in-out"
 					cx="50%"
 					cy="50%"
 					r="45%" />
-			<text text-anchor="middle"
-				  class=""
-				  x="50%"
-				  y="50%">
-				<tspan>{{ translations[store.getLocale(counterid)].value }}:</tspan>
-				<tspan class="value"
-					   x="50%"
-					   dy="1.2em">{{ store.getCounter(counterid) }}</tspan>
-			</text>
 		</svg>
-		<div class="w-full mx-auto max-w-48 aspect-square text-center pt-8"
-			 v-else>{{
-			 	translations[store.getLocale(counterid)].value }}:
-			<span class="value">{{ store.getCounter(counterid) }}</span>
+		<div v-if="hasFullRange"
+			 :class="colorVariants[color].text900"
+			 class="absolute text-sm text-right right-56 top-32 pt-2">{{
+			 	store.getRange(counterid)?.[0] }}<br />
+		</div>
+		<div v-if="hasFullRange"
+			 :class="colorVariants[color].text900"
+			 class="absolute text-sm left-56 top-32 pt-2">{{
+			 	store.getRange(counterid)?.[1] }}<br />
+		</div>
+		<div :class="colorVariants[color].text900"
+			 class="absolute top-6 mx-auto w-64 h-40 text-center pt-8">{{
+			 	translations[store.getLocale(counterid)].value }}:<br />
+			<span :class="colorVariants[color].text500"
+				  class="value font-bold">{{ store.getCounter(counterid) }}</span>
 		</div>
 	</div>
 </template>
