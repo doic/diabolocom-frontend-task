@@ -5,7 +5,7 @@ import { test, expect } from '@playwright/test'
 test('Vue Components', async ({ page }) => {
   await page.goto('/')
   test.step('visits the app root url', async () => {
-    await expect(page.locator('div#app > h1')).toHaveText('Diabolocom Frontend Task')
+    await expect(page.locator('h1')).toHaveText('Diabolocom Frontend Task')
     await expect(page.locator('.display')).toHaveCount(2)
     await expect(page.locator('.display.chart')).toHaveCount(1)
     await expect(page.locator('.display').first()).toContainText('0')

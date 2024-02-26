@@ -1,4 +1,6 @@
 import { describe, it, expect } from 'vitest'
+import * as matchers from 'vitest-axe/matchers'
+expect.extend(matchers)
 
 import { mount } from '@vue/test-utils'
 import CounterDisplay from '../CounterDisplay.ce.vue'
