@@ -30,3 +30,7 @@ I created a different [Vite config file](vite.wc.config.ts) and specific build c
 TailwindCSS had to be built apart to be injected in each component (web components are using [shadow DOM](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM) not allowing them to access the main DOM styles).
 
 Vue has an easy way of inlining css into web components, we just need to rename each target component to `ComponentName.ce.vue`.
+
+# Tests
+
+After setting up unit tests with [Vitest](https://vitest.dev/), and E2E with [Playwright](https://playwright.dev), I added [Axe](https://github.com/dequelabs/axe-core) to the unit tests to enforce accessibility.
